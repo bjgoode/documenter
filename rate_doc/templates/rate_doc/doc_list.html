@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Results</h2>
+    <table id="datatable" class="display">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Rated By</th>
+            <th>Contains New Product</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for doc in object_list %}
+        <tr>
+            <td>{{doc.pk}}</td>
+            <td><a href="{% url 'rate-doc' pk=doc.pk%}">{{doc.article_title}}</a></td>
+            <td>{{doc.ratedBy}}</td>
+            <td>{{doc.isNew}}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+
+{% block extra_js %}
+
+<script type="text/javascript" >
+$(document).ready( function () {
+    console.log('Ready!');
+    $('#datatable').DataTable();
+} );
+</script>
+{% endblock %}

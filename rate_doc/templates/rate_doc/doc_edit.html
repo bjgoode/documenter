@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{doc.article_title}}
+{% endblock %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+
+<div class="row">
+<div class="col-4 text-secondary">
+    <p>Article Title</p>
+    <h5>"{{doc.article_title}}"</h5>
+    <hr>
+    <p>Subject</p>
+    <h5>{{doc.subject}}</h5>
+    <hr>
+    <p>Company</p>
+    <h5>{{doc.company}}</h5>
+    <hr>
+    <p>Publication Title</p>
+    <h5>{{doc.publication_title}}</h5>
+    <hr>
+    <p>Publication Date</p>
+    <h5>{{doc.publication_date}}</h5>
+    <hr>
+    <p>Publication Subject</p>
+    <h5>{{doc.publication_subject}}</h5>
+    <hr>
+    <p>Subject Type</p>
+    <h5>{{doc.source_type}}</h5>
+    <hr>
+    <p>Document Type</p>
+    <h5>{{doc.document_type}}</h5>
+    <hr>  
+    <br>
+    <p class="text-primary">    <strong>{{ form | crispy }}</strong> </p>
+    <input type="submit" class="btn btn-outline-primary" value="Submit!" /> 
+</div>
+<div class="col-8">
+<h3>Rated By: {{doc.ratedBy}}</h3>
+<p class="text-dark p-2">{{doc.html}}</p>
+</div>
+</div>
+</form>
+{% endblock %}
