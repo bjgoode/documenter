@@ -1,6 +1,7 @@
 Django==2.0.5
 django-bower==5.2.0
 django-crispy-forms==1.7.2
+django-environ==0.4.4
 django-extensions==2.0.7
 django-pam==1.3.0
 python-pam==1.8.3
