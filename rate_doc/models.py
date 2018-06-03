@@ -10,11 +10,19 @@ class Doc(models.Model):
     
     rated = models.BooleanField(default=False)
 
-    BOOL_CHOICES = ((True, 'Yes'), (False, 'No'))
+    ARTICLE_CLASSIFICATION_QUESTIONS = (('yes', 'Yes'), ('no', 'No'))
+    PRODUCT_MENTION_CHOICES = (('title', "Article title"), ('subject', 'Subject section'), ('body', "Main body of the text"))
     
     ratedBy = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
-    isNew = models.BooleanField(blank=True, choices=BOOL_CHOICES, default=False, verbose_name = "Article Mentions New Product?")
-    
+    aboutProductLaunch = models.CharField(blank=True, choices=ARTICLE_CLASSIFICATION_QUESTIONS, verbose_name = "Is this article specifically about a product launch?", max_length= 20)
+    aboutProductApproval = models.CharField(blank=True, choices=ARTICLE_CLASSIFICATION_QUESTIONS, verbose_name = "Is this article about an approval for a product?", max_length= 20)
+    mentionsProduct = models.CharField(blank=True, choices=PRODUCT_MENTION_CHOICES, verbose_name = "If the article mentions the product by name, where is it mentioned?", max_length= 20)
+    ifProductInBodyWhere = models.TextField(blank = True, verbose_name = "If the product is mentioned in the body, approximately where is it mentioned?", max_length= 100)
+    subjectProduct = models.TextField(blank = True, verbose_name = "If the product is mentioned anywhere, what is its name?", max_length= 100)
+    subjectCompany = models.TextField(blank = True, verbose_name = "What company is the article about, if any?", max_length= 100)
+    otherCompany = models.TextField(blank = True, verbose_name = "What other companies are mentioned in the article?", max_length= 100)
+    otherProduct = models.TextField(blank = True, verbose_name = "What other products are mentioned in the article?", max_length= 100)
+
     # Other Shit
     article_title = models.TextField()
     subject	= models.TextField()
