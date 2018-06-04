@@ -8,7 +8,7 @@
             <th>ID</th>
             <th>Title</th>
             <th>Rated By</th>
-            <th>Contains New Product</th>
+           <!--  <th>Contains New Product</th> -->
         </tr>
     </thead>
     <tbody>
@@ -17,7 +17,7 @@
             <td>{{doc.pk}}</td>
             <td><a href="{% url 'rate-doc' pk=doc.pk%}">{{doc.article_title}}</a></td>
             <td>{{doc.ratedBy}}</td>
-            <td>{{doc.isNew}}</td>
+            <!-- <td>{{doc.isNew}}</td> -->
         </tr>
     {% endfor %}
     </tbody>

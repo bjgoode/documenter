@@ -17,7 +17,14 @@ from .models import Doc
 class DocUpdate(UpdateView):
     model = Doc
     fields = [
-        'isNew'
+        'aboutProductLaunch',
+        'aboutProductApproval',
+        'mentionsProduct',
+        'ifProductInBodyWhere',
+        'subjectProduct',
+        'subjectCompany',
+        'otherCompany',
+        'otherProduct',
         ]
         
     template_name = "rate_doc/doc_edit.html"
@@ -50,7 +57,14 @@ def Export(request):
         'pk',
         'rated',  
         'ratedBy__username',
-        'isNew',
+        'aboutProductLaunch',
+        'aboutProductApproval',
+        'mentionsProduct',
+        'ifProductInBodyWhere',
+        'subjectProduct',
+        'subjectCompany',
+        'otherCompany',
+        'otherProduct',
         'article_title',
         'subject',
         'company',
