@@ -47,7 +47,7 @@ def get_next(request):
     if assigned_doc:
         doc = assigned_doc.first()
     else:
-        doc = Doc.objects.filter(rated=False).first()
+        doc = Doc.objects.filter(rated=False,assignedTo=None).first()
         doc.assignedTo = request.user
         doc.save()
     
