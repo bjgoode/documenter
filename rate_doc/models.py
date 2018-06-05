@@ -16,6 +16,7 @@ class Doc(models.Model):
     ARTICLE_CLASSIFICATION_QUESTIONS = (('yes', 'Yes'), ('no', 'No'))
     PRODUCT_MENTION_CHOICES = (('title', "Article title"), ('subject', 'Subject section'), ('body', "Main body of the text"))
     
+    assignedTo = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL, related_name='assigned_user')
     ratedBy = models.ForeignKey(User, blank=True, null=True, on_delete=models.SET_NULL)
     aboutProductLaunch = models.CharField(blank=True, choices=ARTICLE_CLASSIFICATION_QUESTIONS, verbose_name = "Is this article specifically about a product launch?", max_length= 20)
     aboutProductApproval = models.CharField(blank=True, choices=ARTICLE_CLASSIFICATION_QUESTIONS, verbose_name = "Is this article about an approval for a product?", max_length= 20)

@@ -42,7 +42,15 @@ class DocList(ListView):
 
 
 def get_next(request):
-    doc = Doc.objects.filter(rated=False).first()
+
+    assigned_doc = Doc.objects.filter(rated=False).filter(assignedTo=request.user.pk)
+    if assigned_doc:
+        doc = assigned_doc.first()
+    else:
+        doc = Doc.objects.filter(rated=False).first()
+        doc.assignedTo = request.user
+        doc.save()
+    
     return HttpResponseRedirect(reverse('rate-doc', kwargs={'pk':doc.pk}))
 
     
